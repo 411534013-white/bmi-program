@@ -18,7 +18,8 @@ def get_bmi_status(bmi: float) -> str:
     else:
         return "重度肥胖"
 
-def main():
+def run_calculator():
+    """執行單次 BMI 計算"""
     print("=" * 30)
     print("         BMI 健康計算機")
     print("=" * 30)
@@ -48,5 +49,22 @@ def main():
     except ValueError:
         print("【錯誤】請輸入有效的數字！")
 
+def main():
+    while True:
+        run_calculator()
+        
+        # 詢問是否繼續計算
+        choice = input("\n是否繼續計算下一筆？(y/n，預設 y)：").strip().lower()
+        if choice == 'n':
+            break
+        print("\n")
+
+    # 防止視窗在雙擊執行時自動關閉
+    print("\n感謝使用！")
+    input("請按 Enter 鍵結束程式...")
+
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except KeyboardInterrupt:
+        print("\n\n程式已中止。")
